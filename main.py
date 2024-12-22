@@ -5,24 +5,24 @@ from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 # Membaca file seattle-weather.csv
-iris = pd.read_csv('seattle-weather.csv')
+data = pd.read_csv('seattle-weather.csv')
 
 # Melihat informasi dataset pada 5 baris pertama
-print(iris.head())
+print(data.head())
 
 # Melihat informasi dataset
-print(iris.info())
+print(data.info())
 
 # Menghilangkan kolom yang tidak penting
-iris.drop('date', axis=1, inplace=True)
+data.drop('date', axis=1, inplace=True)
 
 # Menggunakan LabelEncoder untuk mengonversi kategori menjadi angka
 label_encoder = LabelEncoder()
-iris['weather'] = label_encoder.fit_transform(iris['weather'])
+data['weather'] = label_encoder.fit_transform(data['weather'])
 
 # Memisahkan atribut dan label
-X = iris[['precipitation', 'temp_max', 'temp_min', 'wind']]
-y = iris['weather']
+X = data[['precipitation', 'temp_max', 'temp_min', 'wind']]
+y = data['weather']
 
 # Standarisasi data
 scaler = StandardScaler()
